@@ -1,0 +1,34 @@
+body {
+  background-color: #a1e3ea;
+  width: 100%;
+}
+
+#inputFields {
+  display: flex;
+  padding: 5%;
+  justify-content: space-around;
+}
+
+#cityInput {
+  font-size: 150%;
+}
+
+#countryCodes {
+  font-size: 90%;
+}
+
+#inputBtn {
+  font-size: 150%;
+}
+
+#visualForecast {
+  display: flex;
+  justify-content: space-around;
+  padding: 5%;
+}
+
+.daily-visual {
+  background-color: #8cc6cc;
+  text-align: center;
+  width: 18%;
+}
