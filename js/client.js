@@ -10,6 +10,7 @@ const countryCodes = document.querySelector('#countryCodes');
 function createRequest(apiLink, eventListener) {
   const weatherReq = new XMLHttpRequest();
   weatherReq.addEventListener('load', eventListener);
+  weatherReq.addEventListener('error', errorMessage);
   weatherReq.open('GET', apiLink);
   weatherReq.send();
 }
@@ -28,13 +29,12 @@ const createCodeOption =(codeData) => {
 
   countryCodes.appendChild(eachOption);
 };
-
+// Invoke to create country codes list
 createRequest('http://data.okfn.org/data/core/country-list/r/data.json', codeRequest);
 
 //function for city weather request
 function runRequest() {
   let requestData = JSON.parse(this.responseText);
-  console.log(requestData);
   displayVisual(requestData);
 }
 
@@ -61,7 +61,7 @@ const createDailyVisual = (wholeObj, dayObj) => {
   dayDiv.className = 'daily-visual';
 
   let cityDataName = document.createElement('h1');
-  cityDataName.innerHTML = wholeObj.city.name;
+  cityDataName.innerHTML = `${wholeObj.city.name}, ${wholeObj.city.country}`;
 
   let dateVis = document.createElement('h3');
   dateVis.innerHTML = dayObj.dt_txt;
@@ -86,3 +86,10 @@ const removeOldForecast = () => {
     visualForecastDiv.removeChild(visualForecastDiv.lastChild);
   }
 };
+
+function errorMessage() {
+  removeOldForecast();
+  let error = document.createElement('h1');
+  error.innerHTML = 'NOT FOUND - PLEASE TRY AGAIN';
+  visualForecastDiv.appendChild(error);
+}

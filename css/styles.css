@@ -1,9 +1,21 @@
 body {
   background-color: #a1e3ea;
+  color: yellow;
+  font-family: 'Waiting for the Sunrise';
+  margin: 0;
   width: 100%;
 }
 
-#inputFields {
+#headerName {
+  display: flex;
+  font-size: 100%;
+  left: 1%;
+  line-height: 150%;
+  position: absolute;
+  top: 1%;
+}
+#headerInput {
+  background-color: #8cc6cc;
   display: flex;
   padding: 5%;
   justify-content: space-around;
@@ -29,6 +41,7 @@ body {
 
 .daily-visual {
   background-color: #8cc6cc;
+  font-family: times;
   text-align: center;
   width: 18%;
 }
